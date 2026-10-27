@@ -103,3 +103,5 @@
 body.v2{overflow-x:clip}
 .v2 .js-phone{white-space:nowrap}
 @media(max-width:760px){.v2 .strip .lbl,.v2 .sc-call .lbl{display:none}.v2 .strip .acts .btn,.v2 .sc-call{font-size:15px}}
+@keyframes mt-pulse-sm{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@media(max-width:760px){.v2 .lp-header .pulse{animation-name:mt-pulse-sm;transform-origin:right center}}
