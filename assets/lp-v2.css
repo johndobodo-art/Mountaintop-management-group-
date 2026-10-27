@@ -1,0 +1,102 @@
+/* Landing page v2: pulse effects, extra call CTAs, enhanced mobile.
+   Loaded only on pages with <body class="v2">. */
+
+/* ---------- Pulse animations (transform/opacity only, so they stay smooth) ---------- */
+@keyframes mt-ring{0%{transform:scale(1);opacity:.75}80%,100%{transform:scale(1.18,1.55);opacity:0}}
+@keyframes mt-card{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes mt-wiggle{0%,82%,100%{transform:rotate(0)}85%{transform:rotate(-14deg)}88%{transform:rotate(12deg)}91%{transform:rotate(-10deg)}94%{transform:rotate(6deg)}}
+
+.v2 .pulse{position:relative;isolation:isolate}
+.v2 .pulse::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 3px var(--gold);animation:mt-ring 1.8s ease-out infinite;z-index:-1;pointer-events:none}
+.v2 .ico{width:18px;height:18px;flex:none;fill:currentColor}
+.v2 .pulse .ico{animation:mt-wiggle 2.6s ease-in-out infinite;transform-origin:50% 60%}
+
+/* 1. Header call button */
+.v2 .call-btn{gap:8px;font-size:14px}
+
+/* 2. Quote form: continuous glowing gold border */
+.v2 .form-card{position:relative;border-top:0;border-radius:10px;box-shadow:0 20px 40px #0006}
+.v2 .form-card::before{content:"";position:absolute;inset:-3px;border-radius:13px;border:3px solid var(--gold);box-shadow:0 0 28px 4px #e5ad3966,inset 0 0 18px #e5ad3926;animation:mt-card 2.2s ease-in-out infinite;pointer-events:none}
+.v2 .form-card>*{position:relative}
+.v2 .form-call{display:flex;align-items:center;gap:8px;margin:-6px 0 18px;padding:10px 12px;border-radius:6px;background:#071a29;border:1px dashed #3d5e73;color:#dbe6ec;font-size:14px;text-decoration:none}
+.v2 .form-call strong{color:var(--gold);white-space:nowrap}
+.v2 .form-call .ico{fill:var(--gold)}
+.v2 .form-trust{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:#9eb4c3;font-weight:700;letter-spacing:.04em}
+.v2 .form-trust span::before{content:"✓ ";color:var(--gold)}
+
+/* Number of vehicles as tap buttons */
+.v2 .seg{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;border:0;margin:0;padding:0}
+.v2 .seg legend{display:block;font-size:11px;letter-spacing:.12em;font-weight:900;color:#c3d2db;text-transform:uppercase;margin-bottom:7px;padding:0}
+.v2 .seg input{position:absolute;opacity:0;width:1px;height:1px}
+.v2 .seg label{display:flex;align-items:center;justify-content:center;min-height:50px;border:1px solid #3d5e73;border-radius:4px;background:var(--field);color:#fff;font-size:17px;font-weight:800;cursor:pointer;margin:0;letter-spacing:normal;text-transform:none}
+.v2 .seg input:checked+label{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.v2 .seg input:focus-visible+label{outline:3px solid var(--gold);outline-offset:2px}
+
+/* 3. More call CTAs */
+.v2 .hero-call{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-top:24px}
+.v2 .btn-call{background:transparent;color:#fff;border:2px solid var(--gold);font-size:15px;padding:12px 20px;min-height:54px}
+.v2 .btn-call .ico{fill:var(--gold)}
+.v2 .btn-call:hover{background:#e5ad391a}
+.v2 .hero-call small{color:#b9cad5;font-size:13px}
+.v2 .strip{background:var(--gold);color:var(--navy)}
+.v2 .strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;padding:22px 0}
+.v2 .strip p{margin:0;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1.2}
+.v2 .strip p small{display:block;font-size:14px;font-weight:600;text-transform:none;letter-spacing:normal;margin-top:4px;color:#20323f}
+.v2 .strip .acts{display:flex;gap:10px;flex-wrap:wrap}
+.v2 .btn-dark{background:var(--navy);color:#fff}.v2 .btn-dark .ico{fill:var(--gold)}
+.v2 .btn-dark:hover{background:#0c2a40}
+.v2 .btn-line{border:2px solid var(--navy);color:var(--navy);background:transparent}
+.v2 .strip .pulse::after{box-shadow:0 0 0 3px var(--navy)}
+.v2 .why-copy .btn{margin-top:22px}
+.v2 .faq-call{margin-top:26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:var(--muted)}
+
+/* Floating call button (desktop) / bottom bar (mobile) */
+.v2 .sticky-cta{display:flex;position:fixed;right:24px;bottom:24px;z-index:50;transition:transform .25s ease,opacity .25s ease}
+.v2 .sticky-cta .sc-quote{display:none}
+.v2 .sticky-cta .sc-call{border-radius:40px;padding:14px 22px;box-shadow:0 10px 26px #0007;font-size:14px}
+.v2 .sticky-cta.off{transform:translateY(140%);opacity:0;pointer-events:none}
+
+@media(max-width:760px){
+  .v2 .call-btn{padding:10px 14px;font-size:14px}
+  .v2 .hero{padding:20px 0 36px}
+  .v2 .hero h1{font-size:30px;margin-bottom:10px}
+  .v2 .sub{font-size:15px;line-height:1.5;margin-bottom:12px}
+  .v2 .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .v2 .chips::-webkit-scrollbar{display:none}
+  .v2 .chips li{white-space:nowrap}
+  .v2 .hero-call{margin-top:16px}
+  .v2 .hero-call .btn-call{width:100%}
+  .v2 .hero-call small{width:100%;text-align:center;margin-top:-4px}
+  .v2 .form-card{padding:22px 16px}
+  .v2 .form-card h2{font-size:22px}
+  .v2 .seg{gap:6px}
+  .v2 .sec{padding:48px 0}
+  .v2 .strip .wrap{padding:20px 0}
+  .v2 .strip p{font-size:18px}
+  .v2 .strip .acts{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .v2 .strip .acts .btn{padding:12px 10px}
+  /* Services and gallery become swipeable rows to keep the page short */
+  .v2 .cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-right:-16px;padding-right:16px;scrollbar-width:none}
+  .v2 .cards::-webkit-scrollbar,.v2 .grid::-webkit-scrollbar{display:none}
+  .v2 .card{flex:0 0 78%;scroll-snap-align:start;border-radius:4px}
+  .v2 .grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-right:-16px;padding-right:16px;scrollbar-width:none}
+  .v2 .grid figure{flex:0 0 82%;height:240px;scroll-snap-align:start}
+  .v2 .swipe-hint{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-top:10px}
+  .v2 .services .swipe-hint{color:#9eb4c3}
+  /* Bottom bar: call is always visible; quote button hides while the form is on screen */
+  .v2 .sticky-cta{left:0;right:0;bottom:0;display:grid;grid-template-columns:1.35fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#071a29f5;box-shadow:0 -6px 18px #0006}
+  .v2 .sticky-cta .sc-quote{display:inline-flex}
+  .v2 .sticky-cta .sc-call{border-radius:4px;padding:12px 10px;font-size:14px;box-shadow:none}
+  .v2 .sticky-cta.off{transform:none;opacity:1;pointer-events:auto}
+  .v2 .sticky-cta.form-on{grid-template-columns:1fr}
+  .v2 .sticky-cta.form-on .sc-quote{display:none}
+}
+.swipe-hint{display:none}
+@media(prefers-reduced-motion:reduce){
+  .v2 .pulse::after,.v2 .pulse .ico,.v2 .form-card::before{animation:none}
+  .v2 .form-card::before{opacity:1}
+}
+.v2 .hero-copy,.v2 .hero-form,.v2 .hero-photo{min-width:0}
+body.v2{overflow-x:clip}
+.v2 .js-phone{white-space:nowrap}
+@media(max-width:760px){.v2 .strip .lbl,.v2 .sc-call .lbl{display:none}.v2 .strip .acts .btn,.v2 .sc-call{font-size:15px}}

@@ -225,14 +225,17 @@
     }
   }
 
-  /* ---------- Mobile sticky bar: hide while the form is on screen ---------- */
+  /* ---------- Sticky call/quote bar: reacts to the form being on screen ---------- */
   var bar = document.getElementById('stickyCta');
   var card = document.getElementById('quote');
   if (bar) {
     document.body.classList.add('has-sticky');
     if (card && 'IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { bar.classList.toggle('off', en.isIntersecting); });
+        entries.forEach(function (en) {
+          bar.classList.toggle('off', en.isIntersecting);
+          bar.classList.toggle('form-on', en.isIntersecting);  // v2 mobile: keep Call, hide Get Quote
+        });
       }, { threshold: 0.15 }).observe(card);
     }
   }
